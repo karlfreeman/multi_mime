@@ -52,4 +52,5 @@ Inspiration:
 
 Cribbed:
 
+- [MultiJSON](https://github.com/intridea/multi_json)
 - [Asset_Sync's MultiMime module](https://github.com/rumblelabs/asset_sync/commit/9333bd01ae1a7cf2ffa046b8390fbc4165c38030)
