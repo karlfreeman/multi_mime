@@ -23,8 +23,8 @@ require 'multi_mime'
 
 * [MIME::Types](https://github.com/halostatue/mime-types) MIME::Types
 * [MagicMime](https://github.com/minad/mimemagic) MagicMime
-* [Mime::Type](http://api.rubyonrails.org/classes/Mime/Type.html) Rails Mime Type
-* [Rack::Mime](http://rack.rubyforge.org/doc/Rack/Mime.html) Rack Mime Type
+* [Rails](http://api.rubyonrails.org/classes/Mime/Type.html) Rails ( ActionDispatch::Http::Mime )
+* [Rack](http://rack.rubyforge.org/doc/Rack/Mime.html) Rack ( Rack::Mime )
 
 
 ## Supported Ruby Versions
