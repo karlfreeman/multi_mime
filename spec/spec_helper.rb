@@ -2,8 +2,8 @@ require 'bundler'
 Bundler.setup
 
 require 'rspec'
-require 'multi_mime'
 require 'support/simplecov'
+require 'multi_mime'
 
 #
 RSpec.configure do |config|
