@@ -12,8 +12,7 @@
 A generic swappable back-end for Mime Type detection
 
 ## Usage Examples
-Lots of Ruby libraries utilize Mime Type detection in some form. In order to best support multiple Mime Type detection and
-libraries, `multi_mime` is a general-purpose swappable Mime Type detection backend library. You
+Lots of Ruby libraries utilize Mime Type detection in some form. In order to best support multiple Mime Type detection libraries, `multi_mime` is a general-purpose swappable Mime Type detection backend library. You
 use it like so:
 
 ```ruby
@@ -22,9 +21,11 @@ require 'multi_mime'
 
 ## Supported Mime Engines
 
+* [MIME::Types](https://github.com/halostatue/mime-types) MIME::Types
+* [MagicMime](https://github.com/minad/mimemagic) MagicMime
 * [Mime::Type](http://api.rubyonrails.org/classes/Mime/Type.html) Rails Mime Type
 * [Rack::Mime](http://rack.rubyforge.org/doc/Rack/Mime.html) Rack Mime Type
-* [MIME::Types](https://github.com/halostatue/mime-types) MIME::Types for Ruby
+
 
 ## Supported Ruby Versions
 This library aims to support and is [tested against][travis] the following Ruby

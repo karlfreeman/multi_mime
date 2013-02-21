@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'rake', '>= 0.9'
-gem 'yard', '>= 0.8'
+gem 'rake'
+gem 'yard'
 
 # platforms :ruby_18 do
 # end
@@ -10,6 +10,12 @@ gem 'yard', '>= 0.8'
 # platforms :jruby do
 # end
 
+gem 'mime-types', :require => false
+gem 'actionpack', :require => false
+gem 'rack', :require => false
+gem 'mimemagic', :require => false
+
+
 group :development do
   gem 'kramdown', '>= 0.14'
   gem 'pry'
@@ -17,7 +23,7 @@ group :development do
 end
 
 group :test do
-  gem 'rspec', '>= 2.11'
+  gem 'rspec'
   gem 'simplecov', :require => false
 end
 
