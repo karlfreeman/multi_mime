@@ -1,6 +1,6 @@
 # MultiMime ( WIP )
 [![Gem Version](https://badge.fury.io/rb/multi_mime.png)][gem]
-[![Build Status](https://secure.travis-ci.org/karlfreeman/multi_mime.png?branch=master)][travis]
+[![Build Status](https://travis-ci.org/karlfreeman/multi_mime.png?branch=master)][travis]
 [![Dependency Status](https://gemnasium.com/karlfreeman/multi_mime.png?travis)][gemnasium]
 [![Code Climate](https://codeclimate.com/github/karlfreeman/multi_mime.png)][codeclimate]
 
