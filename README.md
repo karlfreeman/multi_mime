@@ -17,6 +17,10 @@ use it like so:
 
 ```ruby
 require 'multi_mime'
+
+# preview syntax
+MultiMime.by_extension('.jpg')
+MultiMime['text/html']
 ```
 
 ## Supported Mime Engines
