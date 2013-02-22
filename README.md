@@ -17,6 +17,10 @@ use it like so:
 
 ```ruby
 require 'multi_mime'
+
+# preview syntax
+MultiMime.by_extension('.jpg')
+MultiMime['text/html']
 ```
 
 ## Supported Mime Engines
@@ -37,11 +41,9 @@ implementations:
 * Ruby 2.0.0
 * [JRuby][]
 * [Rubinius][]
-* [MacRuby][] (not tested on Travis CI)
 
 [jruby]: http://www.jruby.org/
 [rubinius]: http://rubini.us/
-[macruby]: http://www.macruby.org/
 
 
 # Credits
