@@ -4,7 +4,10 @@ require 'multi_mime/adapter'
 module MultiMime
   module Adapters
     # Use the Mime::Type library to look_up_extension
-    class Mime::Type < Adapter
+    class MimeType < Adapter
+      def foo
+        "mime_type"
+      end
     end
   end
 end

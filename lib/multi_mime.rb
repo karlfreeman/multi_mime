@@ -49,6 +49,7 @@ module MultiMime
   # Supported by default are:
   #
   # * <tt>:mime_types</tt>
+  # * <tt>:mimemagic</tt>
   # * <tt>:mime_type</tt>
   # * <tt>:rack_mime</tt>
   def use(new_adapter)
@@ -56,13 +57,40 @@ module MultiMime
   end
   alias :adapter= :use
 
+  # Foo
+  #
+  # <b>Options</b>
+  #
+  # <tt>:adapter</tt> :: If set, the selected engine will be used just for the call.
+  def foo(options={})
+    adapter = current_adapter(options)
+    adapter.foo
+    # begin
+    #   adapter.foo
+    # rescue adapter::ParseError => exception
+    #   raise LoadError.new(exception.message, exception.backtrace, string)
+    # end
+  end
+
+  #
+  def current_adapter(options={})
+    if new_adapter = options.delete(:adapter)
+      load_adapter(new_adapter)
+    else
+      adapter
+    end
+  end
+
+  private
+
   def load_adapter(new_adapter)
     case new_adapter
     when String, Symbol
       require "multi_mime/adapters/#{new_adapter}"
       MultiMime::Adapters.const_get(:"#{new_adapter.to_s.split('_').map{|s| s.capitalize}.join('')}")
     when NilClass, FalseClass
-      load_adapter(default_adapter)
+      # load_adapter(default_adapter)
+      nil #TODO
     when Class, Module
       new_adapter
     else
