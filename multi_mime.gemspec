@@ -3,6 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 require 'multi_mime/version'
 
 Gem::Specification.new do |gem|
+  gem.add_development_dependency 'awesome_print'
   gem.add_development_dependency 'bundler', '~> 1.0'
   gem.name          = 'multi_mime'
   gem.version       = MultiMime::VERSION

@@ -3,11 +3,16 @@ require 'multi_mime/adapter'
 
 module MultiMime
   module Adapters
-    # Use the Rack::Mime library to look_up_extension
+
+    # Use the Rack::Mime library
     class RackMime < Adapter
-      def foo
-        "rack_mime"
+
+      def by_extension(extension, options={})
+        extension.prepend('.') unless extension[0] == '.' # requires the extension with a dot
+        Rack::Mime.mime_type(extension, nil) # set the fallback to nil
       end
+
     end
+
   end
 end

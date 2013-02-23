@@ -3,11 +3,13 @@ require 'multi_mime/adapter'
 
 module MultiMime
   module Adapters
-    # Use the MIME::Types library to look_up_extension
+
+    # Use the MIME::Types library
     class MimeTypes < Adapter
-      def foo
-        "mime_types"
+      def by_extension(extension, options={})
+        MIME::Types.type_for(extension).first
       end
     end
+
   end
 end

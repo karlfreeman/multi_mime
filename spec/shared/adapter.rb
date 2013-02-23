@@ -8,8 +8,23 @@ shared_examples_for 'an adapter' do |adapter|
     end
   end
 
-  it 'works' do
-    MultiMime.foo.should eq adapter
+  context :by_extension do
+
+    describe :without_dot do
+      subject { MultiMime.by_extension('html') }
+      it { should eq 'text/html' }
+    end
+
+    describe :with_dot do
+      subject { MultiMime.by_extension('.html') }
+      it { should eq 'text/html' }
+    end
+
+    describe :unknown_extension do
+      subject { MultiMime.by_extension('.foo.bar') }
+      it { should be_nil }
+    end
+
   end
 
 end

@@ -15,13 +15,11 @@ A generic swappable back-end for Mime Type detection
 Lots of Ruby libraries utilize Mime Type detection in some form. In order to best support multiple Mime Type detection libraries, `multi_mime` is a general-purpose swappable Mime Type detection backend library. You
 use it like so:
 
-```ruby
-require 'multi_mime'
+    require 'multi_mime'
 
-# preview syntax
-MultiMime.by_extension('.jpg')
-MultiMime['text/html']
-```
+    # preview syntax
+    MultiMime.by_extension('.jpg')
+    MultiMime['text/html']
 
 ## Supported Mime Engines
 
@@ -29,7 +27,6 @@ MultiMime['text/html']
 * [MagicMime](https://github.com/minad/mimemagic)
 * [Rails](http://api.rubyonrails.org/classes/Mime/Type.html) ( ActionDispatch::Http::Mime )
 * [Rack](http://rack.rubyforge.org/doc/Rack/Mime.html) ( Rack::Mime )
-
 
 ## Supported Ruby Versions
 This library aims to support and is [tested against][travis] the following Ruby
@@ -45,15 +42,14 @@ implementations:
 [jruby]: http://www.jruby.org/
 [rubinius]: http://rubini.us/
 
-
 # Credits
 
 Inspiration:
 
-- [MultiJSON](https://github.com/intridea/multi_json)
-- [MultiXML](https://github.com/sferik/multi_xml)
+* [MultiJSON](https://github.com/intridea/multi_json)
+* [MultiXML](https://github.com/sferik/multi_xml)
 
 Cribbed:
 
-- [MultiJSON](https://github.com/intridea/multi_json)
-- [Asset_Sync's MultiMime module](https://github.com/rumblelabs/asset_sync/commit/9333bd01ae1a7cf2ffa046b8390fbc4165c38030)
+* [MultiJSON](https://github.com/intridea/multi_json)
+* [Asset_Sync's MultiMime module](https://github.com/rumblelabs/asset_sync/commit/9333bd01ae1a7cf2ffa046b8390fbc4165c38030)

@@ -3,11 +3,13 @@ require 'multi_mime/adapter'
 
 module MultiMime
   module Adapters
-    # Use the Mimemagic library to look_up_extension
+
+    # Use the Mimemagic library
     class Mimemagic < Adapter
-      def foo
-        "mimemagic"
+      def by_extension(extension, options={})
+        MimeMagic.by_extension(extension)
       end
     end
+
   end
 end

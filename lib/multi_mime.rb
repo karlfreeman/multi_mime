@@ -30,7 +30,7 @@ module MultiMime
       end
     end
 
-    Kernel.warn "[WARNING] MultiMime hasn't been able to detect a default adapter"
+    Kernel.warn "[WARNING] MultiMime hasn't been able to detect an adapter"
     
     nil
 
@@ -39,9 +39,7 @@ module MultiMime
   # Get the current adapter class.
   def adapter
     return @adapter if defined?(@adapter) && @adapter
-
-    self.use nil # load default adapter
-
+    self.use nil # there is no adapter
     @adapter
   end
 
@@ -57,22 +55,19 @@ module MultiMime
   end
   alias :adapter= :use
 
-  # Foo
+  # Get Mime Type by extension
   #
-  # <b>Options</b>
-  #
-  # <tt>:adapter</tt> :: If set, the selected engine will be used just for the call.
-  def foo(options={})
+  # @param [String] extension an extension to determine against
+  # @param [Hash] options
+  #  * adapter [String] If set, the selected adapter will be used for this call.
+  # @return [String] Mime Type
+  def by_extension(extension, options={})
     adapter = current_adapter(options)
-    adapter.foo
-    # begin
-    #   adapter.foo
-    # rescue adapter::ParseError => exception
-    #   raise LoadError.new(exception.message, exception.backtrace, string)
-    # end
+    adapter.by_extension(extension, options={})
   end
 
-  #
+  private
+
   def current_adapter(options={})
     if new_adapter = options.delete(:adapter)
       load_adapter(new_adapter)
@@ -81,16 +76,13 @@ module MultiMime
     end
   end
 
-  private
-
   def load_adapter(new_adapter)
     case new_adapter
     when String, Symbol
       require "multi_mime/adapters/#{new_adapter}"
       MultiMime::Adapters.const_get(:"#{new_adapter.to_s.split('_').map{|s| s.capitalize}.join('')}")
     when NilClass, FalseClass
-      # load_adapter(default_adapter)
-      nil #TODO
+      nil # TODO
     when Class, Module
       new_adapter
     else

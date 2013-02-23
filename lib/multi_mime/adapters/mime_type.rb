@@ -3,11 +3,14 @@ require 'multi_mime/adapter'
 
 module MultiMime
   module Adapters
-    # Use the Mime::Type library to look_up_extension
+
+    # Use the Mime::Type library
     class MimeType < Adapter
-      def foo
-        "mime_type"
+      def by_extension(extension, options={})
+        extension = extension[/(?:.*\.)(.*$)/, 1] if extension.include?('.') # requires just the extension, without the dot
+        Mime::Type.lookup_by_extension(extension)
       end
     end
+
   end
 end
