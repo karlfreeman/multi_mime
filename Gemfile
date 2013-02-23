@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rake'
+gem 'rake', '>= 1.2'
 gem 'yard'
 
 # platforms :ruby_18 do
@@ -11,7 +11,7 @@ gem 'yard'
 # end
 
 gem 'mime-types', :require => false
-gem 'actionpack', :require => false
+gem 'actionpack', '>= 3.2', :require => false
 gem 'rack', :require => false
 gem 'mimemagic', :require => false
 
