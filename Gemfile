@@ -15,7 +15,6 @@ gem 'actionpack', '>= 3.2', :require => false
 gem 'rack', :require => false
 gem 'mimemagic', :require => false
 
-
 group :development do
   gem 'kramdown', '>= 0.14'
   gem 'pry'
