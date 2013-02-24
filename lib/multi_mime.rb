@@ -44,12 +44,12 @@ module MultiMime
   end
 
   # Set the Mime parser utilizing a symbol, string, or class.
-  # Supported by default are:
   #
-  # * <tt>:mime_types</tt>
-  # * <tt>:mimemagic</tt>
-  # * <tt>:mime_type</tt>
-  # * <tt>:rack_mime</tt>
+  # @param [Symbol, String, Class] new_adapter
+  #  * mime_types
+  #  * mimemagic
+  #  * mime_type
+  #  * rack_mime
   def use(new_adapter)
     @adapter = load_adapter(new_adapter)
   end
@@ -58,7 +58,7 @@ module MultiMime
 
   # Get mime type by mime type
   #
-  # @param [String] mime_type The extension to determine against
+  # @param [String] mime_type The mime_type to determine against
   # @param [Hash] opts
   #  * adapter [String] If set, the selected adapter will be used for this call.
   # @return [String] Mime type
