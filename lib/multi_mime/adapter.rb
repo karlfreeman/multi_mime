@@ -18,6 +18,10 @@ module MultiMime
         instance.type_for_path(path, opts)
       end
 
+      def type_for_file(file, opts={})
+        instance.type_for_file(file, opts)
+      end
+
     end
   end
 end

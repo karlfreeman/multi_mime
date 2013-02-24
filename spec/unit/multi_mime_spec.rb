@@ -2,6 +2,27 @@ require 'spec_helper'
 
 describe MultiMime do
 
+  context :validations do
+
+    describe :type_for do
+      specify { expect { MultiMime.type_for(nil) }.to raise_error(ArgumentError) }
+    end
+
+    describe :type_for_extension do
+      specify { expect { MultiMime.type_for_extension(nil) }.to raise_error(ArgumentError) }
+    end
+
+    describe :type_for_path do
+      specify { expect { MultiMime.type_for_path(nil) }.to raise_error(ArgumentError) }
+    end
+
+    describe :type_for_file do
+      specify { expect { MultiMime.type_for_file(nil) }.to raise_error(ArgumentError) }
+      specify { expect { MultiMime.type_for_file('.html') }.to raise_error(ArgumentError) }
+    end
+
+  end
+
   context :alias do
 
     describe :by_type do

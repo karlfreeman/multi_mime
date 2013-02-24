@@ -23,6 +23,7 @@ end
 
 group :test do
   gem 'rspec'
+  gem 'fakefs', :require => 'fakefs/safe'
   gem 'simplecov', :require => false
 end
 

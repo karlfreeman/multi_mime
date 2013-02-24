@@ -63,6 +63,7 @@ module MultiMime
   #  * adapter [String] If set, the selected adapter will be used for this call.
   # @return [String] Mime type
   def type_for(mime_type, opts={})
+    raise ArgumentError, "Mime Type must be a String. #{mime_type.inspect} given." unless mime_type.is_a? String
     adapter = current_adapter(opts)
     adapter.type_for(mime_type, opts)
   end
@@ -75,6 +76,7 @@ module MultiMime
   #  * adapter [String] If set, the selected adapter will be used for this call.
   # @return [String] Mime type
   def type_for_extension(extension, opts={})
+    raise ArgumentError, "Extension must be a String. #{extension.inspect} given." unless extension.is_a? String
     adapter = current_adapter(opts)
     adapter.type_for_extension(extension, opts)
   end
@@ -87,10 +89,24 @@ module MultiMime
   #  * adapter [String] If set, the selected adapter will be used for this call.
   # @return [String] Mime type
   def type_for_path(path, opts={})
+    raise ArgumentError, "Path must be a String. #{path.inspect} given." unless path.is_a? String
     adapter = current_adapter(opts)
     adapter.type_for_path(path, opts)
   end
   alias :by_path :type_for_path
+
+  # Get mime type by file
+  #
+  # @param [File] file The file to determine against
+  # @param [Hash] opts
+  #  * adapter [String] If set, the selected adapter will be used for this call.
+  # @return [String] Mime type
+  def type_for_file(file, opts={})
+    raise ArgumentError, "File must be a File. #{file.inspect} given." unless file.is_a? File
+    adapter = current_adapter(opts)
+    adapter.type_for_file(file, opts)
+  end
+  alias :by_file :type_for_file
 
   private
 

@@ -55,4 +55,25 @@ shared_examples_for 'an adapter' do |adapter|
 
   end
 
+  describe :type_for_file, :fakefs => true do
+
+    let(:extension_file) {
+      File.open('foo.html', 'w')
+    }
+    let(:extensionless_file) {
+      File.open('foo', 'w')
+    }
+
+    context :extension_file do
+      subject { MultiMime.type_for_file(extension_file) }
+      it { should eq 'text/html' }
+    end
+
+    context :extensionless_file do
+      subject { MultiMime.type_for_file(extensionless_file) }
+      it { should be_nil }
+    end
+
+  end
+
 end

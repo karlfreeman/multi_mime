@@ -4,6 +4,7 @@ begin; require 'awesome_print'; rescue LoadError; end
 
 require 'rspec'
 require 'support/pry'
+require 'support/fakefs'
 require 'support/simplecov'
 require 'shared/adapter'
 require 'multi_mime'

@@ -20,6 +20,10 @@ module MultiMime
         type_for_extension(File.extname(path))
       end
 
+      def type_for_file(file, opts={})
+        type_for_extension(File.extname(file))
+      end
+
     end
 
   end
