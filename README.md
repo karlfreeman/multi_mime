@@ -1,4 +1,4 @@
-# MultiMime ( WIP )
+# MultiMime
 [![Gem Version](https://badge.fury.io/rb/multi_mime.png)][gem]
 [![Build Status](https://travis-ci.org/karlfreeman/multi_mime.png?branch=master)][travis]
 [![Dependency Status](https://gemnasium.com/karlfreeman/multi_mime.png?travis)][gemnasium]
@@ -15,18 +15,22 @@ A generic swappable back-end for Mime Type detection
 Lots of Ruby libraries utilize Mime Type detection in some form. In order to best support multiple Mime Type detection libraries, `multi_mime` is a general-purpose swappable Mime Type detection backend library. You
 use it like so:
 
-    require 'multi_mime'
+```ruby
+require 'multi_mime'
 
-    # complete
-    MultiMime.type_for('text/html') # alias :by_type
-    MultiMime.type_for_extension('.jpg') # alias :by_extension
-    MultiMime.type_for_path('/usr/local/foo/bar/example.jpg') # alias :by_path
-    MultiMime.type_for_file(File.new...) # alias :by_file
+MultiMime.type_for('text/html') # 'text/html' 
+# alias :by_type
 
-    # maybe
-    # Rack/Mime.match / MIME::Types.type_for
-    MultiMime.match?('text/html', 'text/*')
-    
+MultiMime.type_for_extension('.html') # 'text/html'
+# alias :by_extension
+
+MultiMime.type_for_path('/usr/local/foo/bar/foo.jpg') # 'text/html'
+# alias :by_path
+
+MultiMime.type_for_file( File.open('foo.html', 'w') ) # 'text/html'
+# alias :by_file
+```
+
 ## Supported Mime Engines
 
 * [MIME::Types](https://github.com/halostatue/mime-types)
