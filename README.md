@@ -26,6 +26,10 @@ use it like so:
     MultiMime.type_for_path('/usr/local/foo/bar/example.jpg') # alias :by_path
     MultiMime.type_for_file(File.new...) # alias :by_file
 
+    # maybe
+    # Rack/Mime.match / MIME::Types.type_for
+    MultiMime.match?('text/html', 'text/*')
+    
 ## Supported Mime Engines
 
 * [MIME::Types](https://github.com/halostatue/mime-types)
