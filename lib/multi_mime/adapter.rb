@@ -6,8 +6,12 @@ module MultiMime
     include Singleton
     class << self
 
-      def type_for_extension(extension, options={})
-        instance.type_for_extension(extension, options={})
+      def type_for(mime_type, opts={})
+        instance.type_for(mime_type, opts)
+      end
+
+      def type_for_extension(extension, opts={})
+        instance.type_for_extension(extension, opts)
       end
 
     end

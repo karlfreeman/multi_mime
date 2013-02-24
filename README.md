@@ -21,7 +21,7 @@ use it like so:
     MultiMime.type_for_extension('.jpg') # alias :by_extension
     
     # todo
-    MultiMime.type_for('text/html') # alias :by_mime, []
+    MultiMime.type_for('text/html') # alias :by_type, []
     MultiMime.type_for_path('/usr/local/foo/bar/example.jpg') # alias :by_path
     MultiMime.type_for_file(File.new...) # alias :by_file
 

@@ -7,7 +7,11 @@ module MultiMime
     # Use the MIME::Types library
     class MimeTypes < Adapter
 
-      def type_for_extension(extension, options={})
+      def type_for(mime_type, opts={})
+        MIME::Types[mime_type].first
+      end
+
+      def type_for_extension(extension, opts={})
         MIME::Types.type_for(extension).first
       end
 

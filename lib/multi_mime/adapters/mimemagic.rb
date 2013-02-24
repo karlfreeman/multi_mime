@@ -7,7 +7,12 @@ module MultiMime
     # Use the Mimemagic library
     class Mimemagic < Adapter
 
-      def type_for_extension(extension, options={})
+      def type_for(mime_type, opts={})
+        type = MimeMagic::EXTENSIONS.key(mime_type) # Mimemagic actually doesnt allow you to simply verify that a mime type exists
+        type ? mime_type : nil
+      end
+
+      def type_for_extension(extension, opts={})
         MimeMagic.by_extension(extension)
       end
 

@@ -4,6 +4,11 @@ describe MultiMime do
 
   context :alias do
 
+    describe :by_type do
+      subject { MultiMime.instance_method(:by_type) }
+      it { should == MultiMime.instance_method(:type_for) }
+    end
+
     describe :by_extension do
       subject { MultiMime.instance_method(:by_extension) }
       it { should == MultiMime.instance_method(:type_for_extension) }
