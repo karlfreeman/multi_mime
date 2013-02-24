@@ -17,6 +17,10 @@ module MultiMime
         Rack::Mime.mime_type(extension, nil) # set the fallback to nil
       end
 
+      def type_for_path(path, opts={})
+        type_for_extension(File.extname(path))
+      end
+
     end
 
   end

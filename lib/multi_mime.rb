@@ -80,6 +80,18 @@ module MultiMime
   end
   alias :by_extension :type_for_extension
 
+  # Get mime type by path
+  #
+  # @param [String] path The path to determine against
+  # @param [Hash] opts
+  #  * adapter [String] If set, the selected adapter will be used for this call.
+  # @return [String] Mime type
+  def type_for_path(path, opts={})
+    adapter = current_adapter(opts)
+    adapter.type_for_path(path, opts)
+  end
+  alias :by_path :type_for_path
+
   private
 
   def current_adapter(opts={})

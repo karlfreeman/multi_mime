@@ -14,6 +14,10 @@ module MultiMime
         instance.type_for_extension(extension, opts)
       end
 
+      def type_for_path(path, opts={})
+        instance.type_for_path(path, opts)
+      end
+
     end
   end
 end

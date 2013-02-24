@@ -16,6 +16,10 @@ module MultiMime
         Mime::Type.lookup_by_extension(extension)
       end
 
+      def type_for_path(path, opts={})
+        type_for_extension(File.extname(path))
+      end
+
     end
 
   end

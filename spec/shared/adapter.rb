@@ -8,6 +8,20 @@ shared_examples_for 'an adapter' do |adapter|
     end
   end
 
+  describe :type_for do
+
+    context :with_correct_mime_type do
+      subject { MultiMime.type_for('text/html') }
+      it { should eq 'text/html' }
+    end
+
+    context :with_incorrect_mime_type do
+      subject { MultiMime.type_for('foo/bar') }
+      it { should be_nil }
+    end
+
+  end
+
   describe :type_for_extension do
 
     context :without_dot do
@@ -27,15 +41,15 @@ shared_examples_for 'an adapter' do |adapter|
 
   end
 
-  describe :type_for do
+  describe :type_for_path do
 
-    context :with_correct_mime_type do
-      subject { MultiMime.type_for('text/html') }
+    context :known_extension do
+      subject { MultiMime.type_for_path('/usr/local/foo/bar.html') }
       it { should eq 'text/html' }
     end
 
-    context :with_incorrect_mime_type do
-      subject { MultiMime.type_for('foo/bar') }
+    context :unknown_extension do
+      subject { MultiMime.type_for_path('/usr/local/foo/bar.foo') }
       it { should be_nil }
     end
 

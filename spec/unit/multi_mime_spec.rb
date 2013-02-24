@@ -14,6 +14,11 @@ describe MultiMime do
       it { should == MultiMime.instance_method(:type_for_extension) }
     end
 
+    describe :by_path do
+      subject { MultiMime.instance_method(:by_path) }
+      it { should == MultiMime.instance_method(:type_for_path) }
+    end
+
   end
 
   # context :defaults do
