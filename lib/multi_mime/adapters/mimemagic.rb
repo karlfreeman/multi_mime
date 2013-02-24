@@ -6,9 +6,11 @@ module MultiMime
 
     # Use the Mimemagic library
     class Mimemagic < Adapter
-      def by_extension(extension, options={})
+
+      def type_for_extension(extension, options={})
         MimeMagic.by_extension(extension)
       end
+
     end
 
   end

@@ -2,6 +2,15 @@ require 'spec_helper'
 
 describe MultiMime do
 
+  context :alias do
+
+    describe :by_extension do
+      subject { MultiMime.instance_method(:by_extension) }
+      it { should == MultiMime.instance_method(:type_for_extension) }
+    end
+
+  end
+
   # context :defaults do
 
   #   describe 'MIME::Types' do

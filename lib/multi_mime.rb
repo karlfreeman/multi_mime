@@ -55,16 +55,17 @@ module MultiMime
   end
   alias :adapter= :use
 
-  # Get Mime Type by extension
+  # Get mime type by extension
   #
-  # @param [String] extension an extension to determine against
+  # @param [String] extension The extension to determine against
   # @param [Hash] options
   #  * adapter [String] If set, the selected adapter will be used for this call.
-  # @return [String] Mime Type
-  def by_extension(extension, options={})
+  # @return [String] Mime type
+  def type_for_extension(extension, options={})
     adapter = current_adapter(options)
-    adapter.by_extension(extension, options={})
+    adapter.type_for_extension(extension, options={})
   end
+  alias :by_extension :type_for_extension
 
   private
 

@@ -6,8 +6,8 @@ module MultiMime
     include Singleton
     class << self
 
-      def by_extension(string, options={})
-        instance.by_extension(string, options={})
+      def type_for_extension(extension, options={})
+        instance.type_for_extension(extension, options={})
       end
 
     end

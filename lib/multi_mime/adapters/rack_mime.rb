@@ -7,7 +7,7 @@ module MultiMime
     # Use the Rack::Mime library
     class RackMime < Adapter
 
-      def by_extension(extension, options={})
+      def type_for_extension(extension, options={})
         extension.insert(0, '.') unless extension[0] == '.' # requires the extension with a dot
         Rack::Mime.mime_type(extension, nil) # set the fallback to nil
       end
