@@ -18,6 +18,7 @@ shared_examples_for 'an adapter' do |adapter|
     context :with_incorrect_mime_type do
       subject { MultiMime.type_for('foo/bar') }
       it { should be_nil }
+      it { should be_a MultiMime::NullType }
     end
 
   end
@@ -37,6 +38,7 @@ shared_examples_for 'an adapter' do |adapter|
     context :unknown_extension do
       subject { MultiMime.type_for_extension('.foo.bar') }
       it { should be_nil }
+      it { should be_a MultiMime::NullType }
     end
 
   end
@@ -51,6 +53,7 @@ shared_examples_for 'an adapter' do |adapter|
     context :unknown_extension do
       subject { MultiMime.type_for_path('/usr/local/foo/bar.foo') }
       it { should be_nil }
+      it { should be_a MultiMime::NullType }
     end
 
   end
@@ -72,7 +75,26 @@ shared_examples_for 'an adapter' do |adapter|
     context :extensionless_file do
       subject { MultiMime.type_for_file(extensionless_file) }
       it { should be_nil }
+      it { should be_a MultiMime::NullType }
     end
+
+  end
+
+  describe :null_type do
+
+    context :with_incorrect_mime_type do
+
+      it "should'nt raise an exception when querying for formats" do
+        mime = MultiMime.type_for('foo/bar')
+        mime.should be_nil
+        mime.should be_a MultiMime::NullType
+        mime.html?.should be false
+        mime.xml?.should be false
+        mime.json?.should be false
+      end
+
+    end
+
 
   end
 
