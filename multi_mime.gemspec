@@ -9,6 +9,7 @@ Gem::Specification.new do |gem|
   gem.version       = MultiMime::VERSION
   gem.authors       = ['Karl Freeman']
   gem.email         = ['karlfreeman@gmail.com']
+  gem.license       = 'MIT'
   gem.description   = %q{A generic swappable back-end for Mime::Type detection}
   gem.summary       = %q{A generic swappable back-end for Mime::Type detection}
   gem.homepage      = 'https://github.com/karlfreeman/multi_mime'
