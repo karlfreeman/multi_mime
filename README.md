@@ -1,15 +1,10 @@
-# MultiMime
-[![Gem Version](https://badge.fury.io/rb/multi_mime.png)][gem]
-[![Build Status](https://travis-ci.org/karlfreeman/multi_mime.png?branch=master)][travis]
-[![Dependency Status](https://gemnasium.com/karlfreeman/multi_mime.png?travis)][gemnasium]
-[![Code Climate](https://codeclimate.com/github/karlfreeman/multi_mime.png)][codeclimate]
-[![Coverage Status](https://coveralls.io/repos/karlfreeman/multi_mime/badge.png?branch=master)][coveralls]
+# MultiMime [![Gem Version](https://badge.fury.io/rb/multi_mime.png)][gem] [![Build Status](https://travis-ci.org/karlfreeman/multi_mime.png?branch=master)][travis] [![Dependency Status](https://gemnasium.com/karlfreeman/multi_mime.png?travis)][gemnasium] [![Coverage Status](https://coveralls.io/repos/karlfreeman/multi_mime/badge.png?branch=master)][coveralls] [![Code Climate](https://codeclimate.com/github/karlfreeman/multi_mime.png)][codeclimate]
 
 [gem]: https://rubygems.org/gems/multi_mime
 [travis]: http://travis-ci.org/karlfreeman/multi_mime
 [gemnasium]: https://gemnasium.com/karlfreeman/multi_mime
-[codeclimate]: https://codeclimate.com/github/karlfreeman/multi_mime
 [coveralls]: https://coveralls.io/r/karlfreeman/multi_mime
+[codeclimate]: https://codeclimate.com/github/karlfreeman/multi_mime
 
 A generic swappable back-end for Mime Type detection
 
