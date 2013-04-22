@@ -8,9 +8,9 @@
 
 A generic swappable back-end for Mime Type detection
 
+Lots of Ruby libraries utilize Mime Type detection in some form. In order to best support multiple Mime Type detection libraries, `multi_mime` is a general-purpose swappable Mime Type detection backend library.
+
 ## Features / Usage Examples
-Lots of Ruby libraries utilize Mime Type detection in some form. In order to best support multiple Mime Type detection libraries, `multi_mime` is a general-purpose swappable Mime Type detection backend library. You
-use it like so:
 
 ```ruby
 require "multi_mime"
