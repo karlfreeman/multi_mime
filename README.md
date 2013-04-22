@@ -8,23 +8,23 @@
 
 A generic swappable back-end for Mime Type detection
 
-## Usage Examples
+## Features / Usage Examples
 Lots of Ruby libraries utilize Mime Type detection in some form. In order to best support multiple Mime Type detection libraries, `multi_mime` is a general-purpose swappable Mime Type detection backend library. You
 use it like so:
 
 ```ruby
-require 'multi_mime'
+require "multi_mime"
 
-MultiMime.type_for('text/html') # 'text/html' 
+MultiMime.type_for("text/html") # "text/html" 
 # alias :by_type
 
-MultiMime.type_for_extension('.html') # 'text/html'
+MultiMime.type_for_extension(".html") # "text/html"
 # alias :by_extension
 
-MultiMime.type_for_path('/usr/local/foo/bar/foo.jpg') # 'text/html'
+MultiMime.type_for_path("/usr/local/foo/bar/foo.jpg") # "text/html"
 # alias :by_path
 
-MultiMime.type_for_file( File.open('foo.html', 'w') ) # 'text/html'
+MultiMime.type_for_file( File.open("foo.html", "w") ) # "text/html"
 # alias :by_file
 ```
 
@@ -58,4 +58,4 @@ Inspiration:
 Cribbed:
 
 * [MultiJSON](https://github.com/intridea/multi_json)
-* [Asset_Sync's MultiMime module](https://github.com/rumblelabs/asset_sync/commit/9333bd01ae1a7cf2ffa046b8390fbc4165c38030)
+* [Asset_Sync"s MultiMime module](https://github.com/rumblelabs/asset_sync/commit/9333bd01ae1a7cf2ffa046b8390fbc4165c38030)

@@ -1,14 +1,14 @@
-require 'multi_mime/options'
+require "multi_mime/options"
 
 module MultiMime
   include Options
   extend self
 
   REQUIREMENT_MAP = [
-    ['mime/types', :mime_types],
-    ['mimemagic', :mimemagic],
-    ['action_dispatch/http/mime_type', :mime_type],
-    ['rack/mime', :rack_mime]
+    ["mime/types", :mime_types],
+    ["mimemagic", :mimemagic],
+    ["action_dispatch/http/mime_type", :mime_type],
+    ["rack/mime", :rack_mime]
   ]
 
   # The default adapter based on what you currently
@@ -20,7 +20,7 @@ module MultiMime
     return :mimemagic if defined?(::MimeMagic)
     return :mime_type if defined?(::Mime::Type)
     return :rack_mime if defined?(::Rack::Mime)
-   
+
     REQUIREMENT_MAP.each do |(library, adapter)|
       begin
         require library
@@ -31,7 +31,7 @@ module MultiMime
     end
 
     Kernel.warn "[WARNING] MultiMime hasn't been able to detect an adapter"
-    
+
     nil
 
   end
@@ -110,6 +110,7 @@ module MultiMime
 
   private
 
+  #
   def current_adapter(opts={})
     if new_adapter = opts.delete(:adapter)
       load_adapter(new_adapter)
@@ -118,11 +119,12 @@ module MultiMime
     end
   end
 
+  #
   def load_adapter(new_adapter)
     case new_adapter
     when String, Symbol
       require "multi_mime/adapters/#{new_adapter}"
-      MultiMime::Adapters.const_get(:"#{new_adapter.to_s.split('_').map{|s| s.capitalize}.join('')}")
+      MultiMime::Adapters.const_get(:"#{new_adapter.to_s.split("_").map{|s| s.capitalize}.join("")}")
     when NilClass, FalseClass
       nil # TODO
     when Class, Module

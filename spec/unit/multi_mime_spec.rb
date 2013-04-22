@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe MultiMime do
 
@@ -18,7 +18,7 @@ describe MultiMime do
 
     describe :type_for_file do
       specify { expect { MultiMime.type_for_file(nil) }.to raise_error(ArgumentError) }
-      specify { expect { MultiMime.type_for_file('.html') }.to raise_error(ArgumentError) }
+      specify { expect { MultiMime.type_for_file(".html") }.to raise_error(ArgumentError) }
     end
 
   end
@@ -44,11 +44,11 @@ describe MultiMime do
 
   # context :defaults do
 
-  #   describe 'MIME::Types' do
+  #   describe "MIME::Types" do
 
-  #     it 'should detect adaptor' do
+  #     it "should detect adaptor" do
   #       Object.send(:remove_const, :MIME) if defined?(MIME)
-  #       require 'mime/types'
+  #       require "mime/types"
   #       MultiMime.default_adapter.should eq :mime_types
   #     end
 
@@ -58,11 +58,11 @@ describe MultiMime do
 
   #   end
 
-  #   describe 'MimeMagic' do
+  #   describe "MimeMagic" do
 
-  #     it 'should detect adaptor' do
+  #     it "should detect adaptor" do
   #       Object.send(:remove_const, :MimeMagic) if defined?(MimeMagic)
-  #       require 'mimemagic'
+  #       require "mimemagic"
   #       MultiMime.default_adapter.should eq :mimemagic
   #     end
 
@@ -71,12 +71,12 @@ describe MultiMime do
   #     end
 
   #   end
-  
-  #   describe 'Mime::Type' do
 
-  #     it 'should detect adaptor' do
+  #   describe "Mime::Type" do
+
+  #     it "should detect adaptor" do
   #       Object.send(:remove_const, :Mime) if defined?(Mime)
-  #       require 'action_dispatch/http/mime_type'
+  #       require "action_dispatch/http/mime_type"
   #       MultiMime.default_adapter.should eq :mime_type
   #     end
 
@@ -86,11 +86,11 @@ describe MultiMime do
 
   #   end
 
-  #   describe 'Rack::Mime' do
+  #   describe "Rack::Mime" do
 
-  #     it 'should detect adaptor' do
+  #     it "should detect adaptor" do
   #       Object.send(:remove_const, :Rack) if defined?(Rack)
-  #       require 'rack/mime'
+  #       require "rack/mime"
   #       MultiMime.default_adapter.should eq :rack_mime
   #     end
 
@@ -104,7 +104,7 @@ describe MultiMime do
 
   %w(mime_types mimemagic mime_type rack_mime).each do |adapter|
     context adapter do
-      it_behaves_like 'an adapter', adapter
+      it_behaves_like "an adapter", adapter
     end
   end
 
