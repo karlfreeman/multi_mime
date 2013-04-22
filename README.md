@@ -45,8 +45,8 @@ implementations:
 * [JRuby][]
 * [Rubinius][]
 
-[jruby]: http://www.jruby.org/
-[rubinius]: http://rubini.us/
+[jruby]: http://www.jruby.org
+[rubinius]: http://rubini.us
 
 # Credits
 
