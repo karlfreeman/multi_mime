@@ -86,11 +86,11 @@ shared_examples_for "an adapter" do |adapter|
 
       it "should'nt raise an exception when querying for formats" do
         mime = MultiMime.type_for("foo/bar")
-        mime.should be_nil
-        mime.should be_a MultiMime::NullType
-        mime.html?.should be false
-        mime.xml?.should be false
-        mime.json?.should be false
+        expect(mime).to be_nil
+        expect(mime).to be_a MultiMime::NullType
+        expect(mime.html?).to be false
+        expect(mime.xml?).to be false
+        expect(mime.json?).to be false
       end
 
     end
