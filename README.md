@@ -21,7 +21,7 @@ MultiMime.type_for("text/html") # "text/html"
 MultiMime.type_for_extension(".html") # "text/html"
 # alias :by_extension
 
-MultiMime.type_for_path("/usr/local/foo/bar/foo.jpg") # "text/html"
+MultiMime.type_for_path("/usr/local/foo/bar/foo.html") # "text/html"
 # alias :by_path
 
 MultiMime.type_for_file( File.open("foo.html", "w") ) # "text/html"
