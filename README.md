@@ -1,13 +1,5 @@
 # MultiMime
 
-[![Gem Version](https://badge.fury.io/rb/multi_mime.png)][gem] [![Build Status](https://travis-ci.org/karlfreeman/multi_mime.png?branch=master)][travis] [![Dependency Status](https://gemnasium.com/karlfreeman/multi_mime.png?travis)][gemnasium] [![Coverage Status](https://coveralls.io/repos/karlfreeman/multi_mime/badge.png?branch=master)][coveralls] [![Code Climate](https://codeclimate.com/github/karlfreeman/multi_mime.png)][codeclimate]
-
-[gem]: https://rubygems.org/gems/multi_mime
-[travis]: http://travis-ci.org/karlfreeman/multi_mime
-[gemnasium]: https://gemnasium.com/karlfreeman/multi_mime
-[coveralls]: https://coveralls.io/r/karlfreeman/multi_mime
-[codeclimate]: https://codeclimate.com/github/karlfreeman/multi_mime
-
 A generic swappable back-end for Mime Type detection
 
 Lots of Ruby libraries utilize Mime Type detection in some form. In order to best support multiple Mime Type detection libraries, `multi_mime` is a general-purpose swappable Mime Type detection backend library.
@@ -30,6 +22,13 @@ MultiMime.type_for_file( File.open("foo.html", "w") ) # "text/html"
 # alias :by_file
 ```
 
+## Build & Dependency Status
+
+[![Gem Version](https://badge.fury.io/rb/multi_mime.png)][gem]
+[![Build Status](https://travis-ci.org/karlfreeman/multi_mime.png)][travis]
+[![Dependency Status](https://gemnasium.com/karlfreeman/multi_mime.png?travis)][gemnasium]
+[![Code Quality](https://codeclimate.com/github/karlfreeman/multi_mime.png)][codeclimate]
+
 ## Supported Mime Engines
 
 * [MIME::Types](https://github.com/halostatue/mime-types)
@@ -47,9 +46,6 @@ implementations:
 * [JRuby][]
 * [Rubinius][]
 
-[jruby]: http://www.jruby.org
-[rubinius]: http://rubini.us
-
 # Credits
 
 Inspiration:
@@ -61,3 +57,11 @@ Cribbed:
 
 * [MultiJSON](https://github.com/intridea/multi_json)
 * [Asset_Sync"s MultiMime module](https://github.com/rumblelabs/asset_sync/commit/9333bd01ae1a7cf2ffa046b8390fbc4165c38030)
+
+[gem]: https://rubygems.org/gems/multi_mime
+[travis]: http://travis-ci.org/karlfreeman/multi_mime
+[gemnasium]: https://gemnasium.com/karlfreeman/multi_mime
+[coveralls]: https://coveralls.io/r/karlfreeman/multi_mime
+[codeclimate]: https://codeclimate.com/github/karlfreeman/multi_mime
+[jruby]: http://www.jruby.org
+[rubinius]: http://rubini.us
