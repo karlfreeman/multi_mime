@@ -28,6 +28,7 @@ MultiMime.type_for_file( File.open("foo.html", "w") ) # "text/html"
 [![Build Status](https://travis-ci.org/karlfreeman/multi_mime.png)][travis]
 [![Dependency Status](https://gemnasium.com/karlfreeman/multi_mime.png?travis)][gemnasium]
 [![Code Quality](https://codeclimate.com/github/karlfreeman/multi_mime.png)][codeclimate]
+[![Coverage Status](https://coveralls.io/repos/karlfreeman/multi_mime/badge.png?branch=master)][coveralls]
 
 ## Supported Mime Engines
 
