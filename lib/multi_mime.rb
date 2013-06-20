@@ -1,7 +1,4 @@
-require "multi_mime/options"
-
 module MultiMime
-  include Options
   extend self
 
   REQUIREMENT_MAP = [
@@ -21,7 +18,7 @@ module MultiMime
     return :mime_type if defined?(::Mime::Type)
     return :rack_mime if defined?(::Rack::Mime)
 
-    REQUIREMENT_MAP.each do |(library, adapter)|
+    REQUIREMENT_MAP.each do |library, adapter|
       begin
         require library
         return adapter
@@ -39,7 +36,7 @@ module MultiMime
   # Get the current adapter class.
   def adapter
     return @adapter if defined?(@adapter) && @adapter
-    self.use nil # there is no adapter
+    self.use default_adapter # load default adapter
     @adapter
   end
 
@@ -115,7 +112,7 @@ module MultiMime
     if new_adapter = opts.delete(:adapter)
       load_adapter(new_adapter)
     else
-      adapter
+      self.adapter
     end
   end
 
@@ -126,12 +123,20 @@ module MultiMime
       require "multi_mime/adapters/#{new_adapter}"
       MultiMime::Adapters.const_get(:"#{new_adapter.to_s.split("_").map{|s| s.capitalize}.join("")}")
     when NilClass, FalseClass
-      nil # TODO
+      load_adapter self.default_adapter
     when Class, Module
       new_adapter
     else
       raise "Did not recognize your adapter specification. Please specify either a symbol or a class."
     end
+  end
+
+  #
+  def with_adapter(new_adapter)
+    old_adapter, self.adapter = adapter, new_adapter
+    yield
+  ensure
+    self.adapter = old_adapter
   end
 
 end

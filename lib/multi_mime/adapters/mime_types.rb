@@ -10,12 +10,12 @@ module MultiMime
 
       #
       def type_for(mime_type, opts={})
-        MIME::Types[mime_type].first || MultiMime::NullType.new
+        ::MIME::Types[mime_type].first || MultiMime::NullType.new
       end
 
       #
       def type_for_extension(extension, opts={})
-        MIME::Types.type_for(extension).first || MultiMime::NullType.new
+        ::MIME::Types.type_for(extension).first || MultiMime::NullType.new
       end
 
       #

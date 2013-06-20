@@ -10,13 +10,13 @@ module MultiMime
 
       #
       def type_for(mime_type, opts={})
-        Mime::Type.parse_data_with_trailing_star(mime_type).first || MultiMime::NullType.new
+        ::Mime::Type.parse_data_with_trailing_star(mime_type).first || MultiMime::NullType.new
       end
 
       #
       def type_for_extension(extension, opts={})
         extension = extension[/(?:.*\.)(.*$)/, 1] if extension.include?(".") # requires just the extension, without the dot
-        Mime::Type.lookup_by_extension(extension) || MultiMime::NullType.new
+        ::Mime::Type.lookup_by_extension(extension) || MultiMime::NullType.new
       end
 
       #

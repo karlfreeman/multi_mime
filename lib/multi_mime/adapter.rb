@@ -1,5 +1,4 @@
 require "singleton"
-require "multi_mime/options"
 
 module MultiMime
   class Adapter
