@@ -2,11 +2,14 @@ require "action_dispatch/http/mime_type" unless defined?(::Mime::Type)
 require "multi_mime/adapter"
 require "multi_mime/null_type"
 
+
 module MultiMime
   module Adapters
 
     # Use the Mime::Type library
     class MimeType < Adapter
+
+      require "active_support/core_ext/object/blank" # https://github.com/rails/rails/pull/11510
 
       #
       def type_for(mime_type, opts={})
