@@ -28,7 +28,7 @@ RSpec.configure do |config|
 
   #
   def jruby?
-    defined?(RUBY_ENGINE) && RUBY_ENGINE == 'jruby'
+    defined?(RUBY_ENGINE) && RUBY_ENGINE == "jruby"
   end
 
 end
