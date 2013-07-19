@@ -52,6 +52,11 @@ module MultiMime
   end
   alias :adapter= :use
 
+  #
+  def reset_adapter
+    remove_instance_variable :@adapter if defined?(@adapter)
+  end
+
 
   # Get mime type by mime type
   #
@@ -120,7 +125,7 @@ module MultiMime
   def load_adapter(new_adapter)
     case new_adapter
     when String, Symbol
-      require "multi_mime/adapters/#{new_adapter}"
+      require "multi_mime/adapters/#{new_adapter.to_s}"
       MultiMime::Adapters.const_get(:"#{new_adapter.to_s.split("_").map{|s| s.capitalize}.join("")}")
     when NilClass, FalseClass
       load_adapter self.default_adapter

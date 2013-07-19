@@ -44,16 +44,27 @@ describe MultiMime do
 
   # context :defaults do
 
+  #   before do
+  #     Object.send(:remove_const, :MIME) if defined?(::MIME::Types)
+  #     Object.send(:remove_const, :MimeMagic) if defined?(::MimeMagic)
+  #     Object.send(:remove_const, :Mime) if defined?(::Mime::Type)
+  #     Object.send(:remove_const, :Rack) if defined?(::Rack::Mime)
+  #     MultiMime.reset_adapter
+  #   end
+
+  #   after do
+  #     Object.send(:remove_const, :MIME) if defined?(::MIME::Types)
+  #     Object.send(:remove_const, :MimeMagic) if defined?(::MimeMagic)
+  #     Object.send(:remove_const, :Mime) if defined?(::Mime::Type)
+  #     Object.send(:remove_const, :Rack) if defined?(::Rack::Mime)
+  #     MultiMime.reset_adapter
+  #   end
+
   #   describe "MIME::Types" do
 
   #     it "should detect adaptor" do
-  #       Object.send(:remove_const, :MIME) if defined?(MIME)
   #       require "mime/types"
-  #       MultiMime.default_adapter.should eq :mime_types
-  #     end
-
-  #     after(:each) do
-  #      Object.send(:remove_const, :MIME) if defined?(MIME)
+  #       expect(MultiMime.default_adapter).to eq :mime_types
   #     end
 
   #   end
@@ -61,13 +72,8 @@ describe MultiMime do
   #   describe "MimeMagic" do
 
   #     it "should detect adaptor" do
-  #       Object.send(:remove_const, :MimeMagic) if defined?(MimeMagic)
   #       require "mimemagic"
-  #       MultiMime.default_adapter.should eq :mimemagic
-  #     end
-
-  #     after(:each) do
-  #      Object.send(:remove_const, :MimeMagic) if defined?(MimeMagic)
+  #       expect(MultiMime.default_adapter).to eq :mimemagic
   #     end
 
   #   end
@@ -75,13 +81,8 @@ describe MultiMime do
   #   describe "Mime::Type" do
 
   #     it "should detect adaptor" do
-  #       Object.send(:remove_const, :Mime) if defined?(Mime)
   #       require "action_dispatch/http/mime_type"
-  #       MultiMime.default_adapter.should eq :mime_type
-  #     end
-
-  #     after(:each) do
-  #      Object.send(:remove_const, :Mime) if defined?(Mime)
+  #       expect(MultiMime.default_adapter).to eq :mime_type
   #     end
 
   #   end
@@ -89,13 +90,8 @@ describe MultiMime do
   #   describe "Rack::Mime" do
 
   #     it "should detect adaptor" do
-  #       Object.send(:remove_const, :Rack) if defined?(Rack)
   #       require "rack/mime"
-  #       MultiMime.default_adapter.should eq :rack_mime
-  #     end
-
-  #     after(:each) do
-  #      Object.send(:remove_const, :Rack) if defined?(Rack)
+  #       expect(MultiMime.default_adapter).to eq :rack_mime
   #     end
 
   #   end
