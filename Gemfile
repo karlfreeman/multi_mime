@@ -11,7 +11,7 @@ gem "yard"
 # end
 
 gem "mime-types", :require => false
-gem "actionpack", ">= 3.2", :require => false
+gem "actionpack", "~> 3.2", :require => false
 gem "rack", :require => false
 gem "mimemagic", :require => false
 
