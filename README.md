@@ -22,7 +22,7 @@ MultiMime.type_for_file( File.open('foo.html', 'w') ) # 'text/html'
 # alias :by_file
 ```
 
-## Badges (Build, Dependency & Coverage Status)
+## Badges
 
 [![Gem Version](https://badge.fury.io/rb/multi_mime.png)][gem]
 [![Build Status](https://travis-ci.org/karlfreeman/multi_mime.png)][travis]
