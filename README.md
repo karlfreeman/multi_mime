@@ -26,7 +26,6 @@ MultiMime.type_for_file( File.open('foo.html', 'w') ) # 'text/html'
 
 [![Gem Version](https://badge.fury.io/rb/multi_mime.png)][gem]
 [![Build Status](https://travis-ci.org/karlfreeman/multi_mime.png)][travis]
-[![Dependency Status](https://gemnasium.com/karlfreeman/multi_mime.png?travis)][gemnasium]
 [![Code Quality](https://codeclimate.com/github/karlfreeman/multi_mime.png)][codeclimate]
 [![Coverage Status](https://coveralls.io/repos/karlfreeman/multi_mime/badge.png?branch=master)][coveralls]
 [![Gittip](http://img.shields.io/gittip/karlfreeman.png)][gittip]
@@ -62,7 +61,6 @@ Cribbed:
 
 [gem]: https://rubygems.org/gems/multi_mime
 [travis]: http://travis-ci.org/karlfreeman/multi_mime
-[gemnasium]: https://gemnasium.com/karlfreeman/multi_mime
 [coveralls]: https://coveralls.io/r/karlfreeman/multi_mime
 [codeclimate]: https://codeclimate.com/github/karlfreeman/multi_mime
 [gittip]: https://www.gittip.com/karlfreeman/
