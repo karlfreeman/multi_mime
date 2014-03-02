@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe MultiMime do
 
@@ -18,7 +18,7 @@ describe MultiMime do
 
     describe :type_for_file do
       specify { expect { MultiMime.type_for_file(nil) }.to raise_error(ArgumentError) }
-      specify { expect { MultiMime.type_for_file(".html") }.to raise_error(ArgumentError) }
+      specify { expect { MultiMime.type_for_file('.html') }.to raise_error(ArgumentError) }
     end
 
   end
@@ -42,65 +42,69 @@ describe MultiMime do
 
   end
 
-  # context :defaults do
+  context :defaults do
 
-  #   before do
-  #     Object.send(:remove_const, :MIME) if defined?(::MIME::Types)
-  #     Object.send(:remove_const, :MimeMagic) if defined?(::MimeMagic)
-  #     Object.send(:remove_const, :Mime) if defined?(::Mime::Type)
-  #     Object.send(:remove_const, :Rack) if defined?(::Rack::Mime)
-  #     MultiMime.reset_adapter
-  #   end
+    describe 'MIME::Types' do
 
-  #   after do
-  #     Object.send(:remove_const, :MIME) if defined?(::MIME::Types)
-  #     Object.send(:remove_const, :MimeMagic) if defined?(::MimeMagic)
-  #     Object.send(:remove_const, :Mime) if defined?(::Mime::Type)
-  #     Object.send(:remove_const, :Rack) if defined?(::Rack::Mime)
-  #     MultiMime.reset_adapter
-  #   end
+      around do |example|
+        undefine_constants(:MimeMagic, :Mime, :Rack) { example.call }
+        MultiMime.reset_adapter
+      end
 
-  #   describe "MIME::Types" do
+      it 'should detect adapter' do
+        require 'mime/types'
+        expect(MultiMime.default_adapter).to eq :mime_types
+      end
 
-  #     it "should detect adaptor" do
-  #       require "mime/types"
-  #       expect(MultiMime.default_adapter).to eq :mime_types
-  #     end
+    end
 
-  #   end
+    describe 'MimeMagic' do
 
-  #   describe "MimeMagic" do
+      around do |example|
+        undefine_constants(:MIME, :Mime, :Rack) { example.call }
+        MultiMime.reset_adapter
+      end
 
-  #     it "should detect adaptor" do
-  #       require "mimemagic"
-  #       expect(MultiMime.default_adapter).to eq :mimemagic
-  #     end
+      it 'should detect adapter' do
+        require 'mimemagic'
+        expect(MultiMime.default_adapter).to eq :mimemagic
+      end
 
-  #   end
+    end
 
-  #   describe "Mime::Type" do
+    describe 'Mime::Type' do
 
-  #     it "should detect adaptor" do
-  #       require "action_dispatch/http/mime_type"
-  #       expect(MultiMime.default_adapter).to eq :mime_type
-  #     end
+      around do |example|
+        undefine_constants(:MIME, :MimeMagic, :Rack) { example.call }
+        MultiMime.reset_adapter
+      end
 
-  #   end
+      it 'should detect adapter' do
+        require 'action_dispatch/http/mime_type'
+        expect(MultiMime.default_adapter).to eq :mime_type
+      end
 
-  #   describe "Rack::Mime" do
+    end
 
-  #     it "should detect adaptor" do
-  #       require "rack/mime"
-  #       expect(MultiMime.default_adapter).to eq :rack_mime
-  #     end
+    describe 'Rack::Mime' do
 
-  #   end
+      around do |example|
+        undefine_constants(:MIME, :Mime, :MimeMagic) { example.call }
+        MultiMime.reset_adapter
+      end
 
-  # end
+      it 'should detect adapter' do
+        require 'rack/mime'
+        expect(MultiMime.default_adapter).to eq :rack_mime
+      end
 
-  %w(mime_types mimemagic mime_type rack_mime).each do |adapter|
+    end
+
+  end
+
+  MultiMime::REQUIREMENT_MAP.each do |adapter, library, clazz|
     context adapter do
-      it_behaves_like "an adapter", adapter
+      it_behaves_like 'an adapter', adapter
     end
   end
 

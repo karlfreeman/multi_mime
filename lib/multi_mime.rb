@@ -1,11 +1,13 @@
 module MultiMime
   extend self
 
+  ADAPTERS = %i(mime_types rack_mime mimemagic mime_type)
+
   REQUIREMENT_MAP = [
-    ["mime/types", :mime_types],
-    ["mimemagic", :mimemagic],
-    ["action_dispatch/http/mime_type", :mime_type],
-    ["rack/mime", :rack_mime]
+    [:mime_types, 'mime/types', :MIME].freeze,
+    [:mimemagic, 'mimemagic', :MimeMagic].freeze,
+    [:mime_type, 'action_dispatch/http/mime_type', :Mime].freeze,
+    [:rack_mime, 'rack/mime', :Rack].freeze
   ]
 
   # The default adapter based on what you currently
@@ -18,7 +20,7 @@ module MultiMime
     return :mime_type if defined?(::Mime::Type)
     return :rack_mime if defined?(::Rack::Mime)
 
-    REQUIREMENT_MAP.each do |library, adapter|
+    REQUIREMENT_MAP.each do |adapter, library, clazz|
       begin
         require library
         return adapter
@@ -27,16 +29,15 @@ module MultiMime
       end
     end
 
-    Kernel.warn "[WARNING] MultiMime hasn't been able to detect an adapter"
+    Kernel.warn '[WARNING] MultiMime hasn\'t been able to detect an adapter'
 
     nil
-
   end
 
   # Get the current adapter class.
   def adapter
     return @adapter if defined?(@adapter) && @adapter
-    self.use default_adapter # load default adapter
+    use default_adapter # load default adapter
     @adapter
   end
 
@@ -50,13 +51,12 @@ module MultiMime
   def use(new_adapter)
     @adapter = load_adapter(new_adapter)
   end
-  alias :adapter= :use
+  alias_method :adapter=, :use
 
-  #
+  # Remove the currently loaded adapter
   def reset_adapter
     remove_instance_variable :@adapter if defined?(@adapter)
   end
-
 
   # Get mime type by mime type
   #
@@ -64,12 +64,12 @@ module MultiMime
   # @param [Hash] opts
   #  * adapter [String] If set, the selected adapter will be used for this call.
   # @return [String] Mime type
-  def type_for(mime_type, opts={})
-    raise ArgumentError, "Mime Type must be a String. #{mime_type.inspect} given." unless mime_type.is_a? String
+  def type_for(mime_type, opts = {})
+    fail ArgumentError, "Mime Type must be a String. #{mime_type.inspect} given." unless mime_type.is_a? String
     adapter = current_adapter(opts)
     adapter.type_for(mime_type, opts)
   end
-  alias :by_type :type_for
+  alias_method :by_type, :type_for
 
   # Get mime type by extension
   #
@@ -77,12 +77,12 @@ module MultiMime
   # @param [Hash] opts
   #  * adapter [String] If set, the selected adapter will be used for this call.
   # @return [String] Mime type
-  def type_for_extension(extension, opts={})
-    raise ArgumentError, "Extension must be a String. #{extension.inspect} given." unless extension.is_a? String
+  def type_for_extension(extension, opts = {})
+    fail ArgumentError, "Extension must be a String. #{extension.inspect} given." unless extension.is_a? String
     adapter = current_adapter(opts)
     adapter.type_for_extension(extension, opts)
   end
-  alias :by_extension :type_for_extension
+  alias_method :by_extension, :type_for_extension
 
   # Get mime type by path
   #
@@ -90,12 +90,12 @@ module MultiMime
   # @param [Hash] opts
   #  * adapter [String] If set, the selected adapter will be used for this call.
   # @return [String] Mime type
-  def type_for_path(path, opts={})
-    raise ArgumentError, "Path must be a String. #{path.inspect} given." unless path.is_a? String
+  def type_for_path(path, opts = {})
+    fail ArgumentError, "Path must be a String. #{path.inspect} given." unless path.is_a? String
     adapter = current_adapter(opts)
     adapter.type_for_path(path, opts)
   end
-  alias :by_path :type_for_path
+  alias_method :by_path, :type_for_path
 
   # Get mime type by file
   #
@@ -103,45 +103,55 @@ module MultiMime
   # @param [Hash] opts
   #  * adapter [String] If set, the selected adapter will be used for this call.
   # @return [String] Mime type
-  def type_for_file(file, opts={})
-    raise ArgumentError, "File must be a File. #{file.inspect} given." unless file.is_a? File
+  def type_for_file(file, opts = {})
+    fail ArgumentError, "File must be a File. #{file.inspect} given." unless file.is_a? File
     adapter = current_adapter(opts)
     adapter.type_for_file(file, opts)
   end
-  alias :by_file :type_for_file
+  alias_method :by_file, :type_for_file
 
   private
 
-  #
-  def current_adapter(opts={})
+  def current_adapter(opts = {})
     if new_adapter = opts.delete(:adapter)
       load_adapter(new_adapter)
     else
-      self.adapter
+      adapter
     end
   end
 
-  #
   def load_adapter(new_adapter)
     case new_adapter
     when String, Symbol
-      require "multi_mime/adapters/#{new_adapter.to_s}"
-      MultiMime::Adapters.const_get(:"#{new_adapter.to_s.split("_").map{|s| s.capitalize}.join("")}")
+      adapter_clazz = nil
+      REQUIREMENT_MAP.each do |adapter, library, clazz|
+        if new_adapter.to_sym == adapter
+          require library
+          require "multi_mime/adapters/#{new_adapter.to_s}"
+          adapter_clazz = MultiMime::Adapters.const_get(:"#{new_adapter.to_s.split('_').map { |s| s.capitalize }.join('')}")
+        else
+          next
+        end
+      end
+      if adapter_clazz.nil?
+        Kernel.warn '[WARNING] MultiMime hasn\'t been able to detect an adapter'
+        load_adapter nil
+      else
+        return adapter_clazz
+      end
     when NilClass, FalseClass
-      load_adapter self.default_adapter
+      load_adapter default_adapter
     when Class, Module
       new_adapter
     else
-      raise "Did not recognize your adapter specification. Please specify either a symbol or a class."
+      fail 'Did not recognize your adapter specification. Please specify either a symbol or a class.'
     end
   end
 
-  #
   def with_adapter(new_adapter)
     old_adapter, self.adapter = adapter, new_adapter
     yield
   ensure
     self.adapter = old_adapter
   end
-
 end
