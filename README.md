@@ -7,7 +7,7 @@ Lots of Ruby libraries utilize Mime Type detection in some form. In order to bes
 ## Installation
 
 ```ruby
-gem 'multi_mime', '~> 0.0.1'
+gem 'multi_mime', '~> 0.0.3'
 ```
 
 ```ruby
