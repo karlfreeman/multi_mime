@@ -1,6 +1,6 @@
 # MultiMime
 
-A generic swappable back-end for Mime type detection
+A generic swappable back-end for mime type detection
 
 Lots of ruby libraries utilize mime type detection in some form. In order to best support multiple mime type detection libraries, `multi_mime` is a general-purpose, swappable, mime type detection backend library.
 
@@ -89,7 +89,7 @@ Inspiration:
 Cribbed:
 
 - [MultiJSON](https://github.com/intridea/multi_json)
-- [Asset_Sync"s MultiMime module](https://github.com/rumblelabs/asset_sync/commit/9333bd01ae1a7cf2ffa046b8390fbc4165c38030)
+- [Asset_Sync's MultiMime module](https://github.com/rumblelabs/asset_sync/commit/9333bd01ae1a7cf2ffa046b8390fbc4165c38030)
 
 [gem]: https://rubygems.org/gems/multi_mime
 [travis]: http://travis-ci.org/karlfreeman/multi_mime
