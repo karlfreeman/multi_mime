@@ -9,7 +9,7 @@ eg [MultiJson](https://github.com/intridea/multi_json) for mime types.
 ## Installation
 
 ```ruby
-gem 'multi_mime', '~> 0.0.3'
+gem 'multi_mime', '~> 0.0.4'
 ```
 
 ```ruby
