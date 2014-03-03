@@ -34,14 +34,7 @@ MultiMime.type_for_file( File.open('foo.html', 'w') ) # 'text/html'
 # alias :by_file
 ```
 
-`MultiMime` tries to have intelligent defaulting. That is, if you have any of the supported engines already loaded, it will utilize them before attempting to load any. When loading, libraries are ordered by:
-
-- `:mime_types` (MIME::Types)
-- `mimemagic` (MagicMime)
-- `mime_type` (ActionDispatch::Http::Mime)
-- `:rack_mime` (Rack::Mime)
-
-Lets try using `MultiMime` with `Rack::Mime` loaded, then switch it to `MIME::Types`.
+`MultiMime` tries to have intelligent defaulting. That is, if you have any of the supported engines already loaded, it will utilize them before attempting to load any. When loading, libraries are ordered in the same order as [Supported Mime Engines](https://github.com/karlfreeman/multi_mime#supported-mime-engines). Lets try using `MultiMime` with `Rack::Mime` loaded, then switch it to `MIME::Types`.
 
 ```ruby
 require 'rack/mime' # true
