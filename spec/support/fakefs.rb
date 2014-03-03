@@ -1,3 +1,4 @@
+require 'fakefs/safe'
 require 'fakefs/spec_helpers'
 require 'pathname'
 require 'fileutils'
