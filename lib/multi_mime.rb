@@ -125,7 +125,7 @@ module MultiMime
       REQUIREMENT_MAP.each do |adapter, library, clazz|
         if new_adapter.to_sym == adapter
           require library
-          require "multi_mime/adapters/#{new_adapter.to_s}"
+          require "multi_mime/adapters/#{new_adapter}"
           adapter_clazz = MultiMime::Adapters.const_get(:"#{new_adapter.to_s.split('_').map { |s| s.capitalize }.join('')}")
         else
           next

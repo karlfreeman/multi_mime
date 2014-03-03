@@ -21,18 +21,10 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'fog', '~> 1.12'
 
-  spec.add_development_dependency 'mime-types', '~> 1.5'
-  spec.add_development_dependency 'actionpack', '~> 3.2'
-  spec.add_development_dependency 'rack'
-  spec.add_development_dependency 'mimemagic'
-
   spec.add_development_dependency 'bundler', '~> 1.5'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'kramdown', '>= 0.14'
-  spec.add_development_dependency 'fakefs', '~> 0.5'
-  spec.add_development_dependency 'rspec'
   spec.add_development_dependency 'rubocop'
-  spec.add_development_dependency 'timecop'
   spec.add_development_dependency 'pry'
   spec.add_development_dependency 'yard'
 end
