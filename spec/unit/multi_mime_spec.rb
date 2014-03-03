@@ -40,6 +40,11 @@ describe MultiMime do
       it { should == MultiMime.instance_method(:type_for_path) }
     end
 
+    describe :by_file do
+      subject { MultiMime.instance_method(:by_file) }
+      it { should == MultiMime.instance_method(:type_for_file) }
+    end
+
   end
 
   context :defaults do

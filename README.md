@@ -1,8 +1,8 @@
 # MultiMime
 
-A generic swappable back-end for Mime Type detection
+A generic swappable back-end for Mime type detection
 
-Lots of Ruby libraries utilize Mime Type detection in some form. In order to best support multiple Mime Type detection libraries, `multi_mime` is a general-purpose swappable Mime Type detection backend library. eg [MultiJson](https://github.com/intridea/multi_json) for Mime Types.
+Lots of ruby libraries utilize mime type detection in some form. In order to best support multiple mime type detection libraries, `multi_mime` is a general-purpose swappable mime type detection backend library. eg [MultiJson](https://github.com/intridea/multi_json) for mime types.
 
 ## Installation
 
@@ -16,6 +16,8 @@ require 'multi_mime'
 
 ## Features / Usage Examples
 
+Part of utilizing various mime type libraries is the need for a common interface. `MultiMime` provides just that with various methods.
+
 ```ruby
 MultiMime.type_for('text/html') # 'text/html'
 # alias :by_type
@@ -28,6 +30,24 @@ MultiMime.type_for_path('/usr/local/foo/bar/foo.html') # 'text/html'
 
 MultiMime.type_for_file( File.open('foo.html', 'w') ) # 'text/html'
 # alias :by_file
+```
+
+`MultiMime` tries to have intelligent defaulting. That is, if you have any of the supported engines already loaded, it will utilize them before attempting to load any. When loading, libraries are ordered by `:mime_types` (MIME::Types), `mimemagic` (MagicMime), `mime_type`(ActionDispatch::Http::Mime), `:rack_mime` (Rack::Mime). Lets try using `MultiMime` with `Rack::Mime` loaded, then switch it to `MIME::Types`.
+
+```ruby
+require 'rack/mime' # true
+
+MultiMime.default_adapter # ':rack_mime'
+
+MultiMime.adapter # MultiMime::Adapters::RackMime
+
+MultiMime.reset_adapter # MultiMime::Adapters::RackMime
+
+MultiMime.adapter = :mime_types # `:mime_types`
+
+require 'mime/types' # false (eg loaded)
+
+MultiMime.adapter # MultiMime::Adapters::MimeTypes
 ```
 
 ## Badges
