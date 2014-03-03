@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = MultiMime::VERSION
   spec.authors       = ['Karl Freeman']
   spec.email         = ['karlfreeman@gmail.com']
-  spec.summary       = %q{A generic swappable back-end for Mime::Type detection}
-  spec.description   = %q{A generic swappable back-end for Mime::Type detection}
+  spec.summary       = %q{A generic swappable back-end for MIME type detection}
+  spec.description   = %q{A generic swappable back-end for MIME type detection}
   spec.homepage      = 'https://github.com/karlfreeman/multi_mime'
   spec.license       = 'MIT'
 
