@@ -1,8 +1,6 @@
 module MultiMime
   extend self
 
-  ADAPTERS = %i(mime_types rack_mime mimemagic mime_type)
-
   REQUIREMENT_MAP = [
     [:mime_types, 'mime/types', :MIME].freeze,
     [:mimemagic, 'mimemagic', :MimeMagic].freeze,
