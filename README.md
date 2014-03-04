@@ -30,7 +30,7 @@ MultiMime.type_for_extension('.html') # 'text/html'
 MultiMime.type_for_path('/usr/local/foo/bar/foo.html') # 'text/html'
 # alias :by_path
 
-MultiMime.type_for_file( File.open('foo.html', 'w') ) # 'text/html'
+MultiMime.type_for_file(File.open('foo.html', 'w')) # 'text/html'
 # alias :by_file
 ```
 
