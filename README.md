@@ -59,6 +59,7 @@ MultiMime.type_for_extension('.json') # 'application/json'
 [![Gem Version](http://img.shields.io/gem/v/multi_mime.svg)][gem]
 [![Build Status](http://img.shields.io/travis/karlfreeman/multi_mime.svg)][travis]
 [![Code Quality](http://img.shields.io/codeclimate/github/karlfreeman/multi_mime.svg)][codeclimate]
+[![Inline docs](http://inch-pages.github.io/github/karlfreeman/multi_mime.png)](http://inch-pages.github.io/github/karlfreeman/multi_mime)
 [![Gittip](http://img.shields.io/gittip/karlfreeman.svg)][gittip]
 
 ## Supported Mime Engines
