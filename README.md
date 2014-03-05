@@ -2,7 +2,7 @@
 
 A generic swappable back-end for MIME type detection
 
-Lots of ruby libraries utilize mime type detection in some form. In order to best support multiple mime type detection libraries, `multi_mime` is a general-purpose, swappable, MIME type detection backend library.
+Lots of ruby libraries utilize MIME type detection in some form. In order to best support multiple MIME type detection libraries, `multi_mime` is a general-purpose, swappable, MIME type detection backend library.
 
 eg [MultiJson](https://github.com/intridea/multi_json) for MIME types.
 
@@ -18,7 +18,7 @@ require 'multi_mime'
 
 ## Features / Usage Examples
 
-Part of utilizing various mime type libraries is the need for a common interface. `MultiMime` provides just that with various methods.
+Part of utilizing various MIME type libraries is the need for a common interface. `MultiMime` provides just that with following methods.
 
 ```ruby
 MultiMime.type_for('text/html') # 'text/html'
@@ -61,7 +61,7 @@ MultiMime.type_for_extension('.json') # 'application/json'
 [![Code Quality](http://img.shields.io/codeclimate/github/karlfreeman/multi_mime.svg)][codeclimate]
 [![Gittip](http://img.shields.io/gittip/karlfreeman.svg)][gittip]
 
-## Supported Mime Engines
+## Supported MIME Engines
 
 * [MIME::Types](https://github.com/halostatue/mime-types)
 * [MagicMime](https://github.com/minad/mimemagic)
