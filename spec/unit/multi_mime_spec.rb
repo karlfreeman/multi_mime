@@ -1,9 +1,7 @@
 require 'spec_helper'
 
 describe MultiMime do
-
   context :validations do
-
     describe :type_for do
       specify { expect { MultiMime.type_for(nil) }.to raise_error(ArgumentError) }
     end
@@ -21,10 +19,13 @@ describe MultiMime do
       specify { expect { MultiMime.type_for_file('.html') }.to raise_error(ArgumentError) }
     end
 
+    describe :use do
+      specify { expect { MultiMime.use 'foo' }.to raise_error(MultiMime::AdapterError) }
+      specify { expect { MultiMime.use :foo }.to raise_error(MultiMime::AdapterError) }
+    end
   end
 
   context :alias do
-
     describe :by_type do
       subject { MultiMime.instance_method(:by_type) }
       it { should == MultiMime.instance_method(:type_for) }
@@ -44,13 +45,10 @@ describe MultiMime do
       subject { MultiMime.instance_method(:by_file) }
       it { should == MultiMime.instance_method(:type_for_file) }
     end
-
   end
 
   context :defaults do
-
     describe 'MIME::Types' do
-
       around do |example|
         undefine_constants(:MimeMagic, :Mime, :Rack) { example.call }
         MultiMime.reset_adapter
@@ -60,11 +58,9 @@ describe MultiMime do
         require 'mime/types'
         expect(MultiMime.default_adapter).to eq :mime_types
       end
-
     end
 
     describe 'MimeMagic' do
-
       around do |example|
         undefine_constants(:MIME, :Mime, :Rack) { example.call }
         MultiMime.reset_adapter
@@ -74,11 +70,9 @@ describe MultiMime do
         require 'mimemagic'
         expect(MultiMime.default_adapter).to eq :mimemagic
       end
-
     end
 
     describe 'Mime::Type' do
-
       around do |example|
         undefine_constants(:MIME, :MimeMagic, :Rack) { example.call }
         MultiMime.reset_adapter
@@ -88,11 +82,9 @@ describe MultiMime do
         require 'action_dispatch/http/mime_type'
         expect(MultiMime.default_adapter).to eq :mime_type
       end
-
     end
 
     describe 'Rack::Mime' do
-
       around do |example|
         undefine_constants(:MIME, :Mime, :MimeMagic) { example.call }
         MultiMime.reset_adapter
@@ -102,7 +94,6 @@ describe MultiMime do
         require 'rack/mime'
         expect(MultiMime.default_adapter).to eq :rack_mime
       end
-
     end
 
   end
@@ -112,5 +103,4 @@ describe MultiMime do
       it_behaves_like 'an adapter', adapter
     end
   end
-
 end

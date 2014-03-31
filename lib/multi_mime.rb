@@ -1,4 +1,8 @@
 module MultiMime
+  class Error < StandardError; end
+  class AdapterError < Error; end
+  class DefaultAdapterError < Error; end
+
   extend self
 
   REQUIREMENT_MAP = [
@@ -26,9 +30,7 @@ module MultiMime
         next
       end
     end
-
-    Kernel.warn '[WARNING] MultiMime hasn\'t been able to detect an adapter'
-
+    fail DefaultAdapterError, 'MultiMime hasn\'t been able to detect a default_adapter'
     nil
   end
 
@@ -132,7 +134,7 @@ module MultiMime
         end
       end
       if adapter_clazz.nil?
-        Kernel.warn '[WARNING] MultiMime hasn\'t been able to detect an adapter'
+        fail AdapterError, "MultiMime hasn't been able to load adapter #{new_adapter}"
         load_adapter nil
       else
         return adapter_clazz
