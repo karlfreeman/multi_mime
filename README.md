@@ -54,6 +54,8 @@ MultiMime.adapter # MultiMime::Adapters::MimeTypes
 MultiMime.type_for_extension('.json') # 'application/json'
 ```
 
+When MultiMime fails to load the specified adapter, it'll throw `MultiMime::AdapterError` which inherits from `ArgumentError`.
+
 ## Badges
 
 [![Gem Version](http://img.shields.io/gem/v/multi_mime.svg)][gem]

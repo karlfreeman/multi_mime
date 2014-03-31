@@ -20,8 +20,8 @@ describe MultiMime do
     end
 
     describe :use do
-      specify { expect { MultiMime.use 'foo' }.to raise_error(MultiMime::AdapterError) }
-      specify { expect { MultiMime.use :foo }.to raise_error(MultiMime::AdapterError) }
+      specify { expect { MultiMime.use Time.new }.to raise_error(MultiMime::AdapterError, /Did not recognize your adapter specification/) }
+      specify { expect { MultiMime.use 'foo' }.to raise_error(MultiMime::AdapterError, /Did not recognize your adapter specification/) }
     end
   end
 

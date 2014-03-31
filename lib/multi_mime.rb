@@ -1,8 +1,5 @@
+require 'multi_mime/adapter_error'
 module MultiMime
-  class Error < StandardError; end
-  class AdapterError < Error; end
-  class DefaultAdapterError < Error; end
-
   extend self
 
   REQUIREMENT_MAP = [
@@ -30,7 +27,7 @@ module MultiMime
         next
       end
     end
-    fail DefaultAdapterError, 'MultiMime hasn\'t been able to detect a default_adapter'
+    fail 'MultiMime hasn\'t been able to detect a default_adapter'
     nil
   end
 
@@ -134,8 +131,7 @@ module MultiMime
         end
       end
       if adapter_clazz.nil?
-        fail AdapterError, "MultiMime hasn't been able to load adapter #{new_adapter}"
-        load_adapter nil
+        raise ::LoadError, new_adapter
       else
         return adapter_clazz
       end
@@ -144,8 +140,10 @@ module MultiMime
     when Class, Module
       new_adapter
     else
-      fail 'Did not recognize your adapter specification. Please specify either a symbol or a class.'
+      raise ::LoadError, new_adapter
     end
+  rescue ::LoadError => exception
+    raise AdapterError.build(exception)
   end
 
   def with_adapter(new_adapter)
