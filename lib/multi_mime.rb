@@ -148,10 +148,4 @@ module MultiMime
     raise AdapterError.build(exception)
   end
 
-  def with_adapter(new_adapter)
-    old_adapter, self.adapter = adapter, new_adapter
-    yield
-  ensure
-    self.adapter = old_adapter
-  end
 end
