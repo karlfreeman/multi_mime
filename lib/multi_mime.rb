@@ -34,7 +34,7 @@ module MultiMime
 
   # Get the current adapter class.
   def adapter
-    use default_adapter unless defined?(@adapter) # load default adapter
+    use(default_adapter) unless defined?(@adapter) # load default adapter
     @adapter
   end
 

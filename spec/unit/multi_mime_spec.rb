@@ -26,9 +26,9 @@ describe MultiMime do
       specify { expect { MultiMime.type_for_file('.html') }.to raise_error(ArgumentError) }
     end
 
-    describe :use do
-      specify { expect { MultiMime.use Time.new }.to raise_error(MultiMime::AdapterError, /Did not recognize your adapter specification/) }
-      specify { expect { MultiMime.use 'foo' }.to raise_error(MultiMime::AdapterError, /Did not recognize your adapter specification/) }
+    describe :adapter= do
+      specify { expect { MultiMime.adapter = Time.new }.to raise_error(MultiMime::AdapterError, /Did not recognize your adapter specification/) }
+      specify { expect { MultiMime.adapter = 'foo' }.to raise_error(MultiMime::AdapterError, /Did not recognize your adapter specification/) }
     end
   end
 
