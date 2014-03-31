@@ -1,3 +1,4 @@
+require 'thread'
 require 'multi_mime/adapter_error'
 module MultiMime
   extend self
@@ -33,8 +34,7 @@ module MultiMime
 
   # Get the current adapter class.
   def adapter
-    return @adapter if defined?(@adapter) && @adapter
-    use default_adapter # load default adapter
+    use default_adapter unless defined?(@adapter) # load default adapter
     @adapter
   end
 
@@ -46,7 +46,9 @@ module MultiMime
   #  * mime_type
   #  * rack_mime
   def use(new_adapter)
-    @adapter = load_adapter(new_adapter)
+    Thread.exclusive do
+      @adapter = load_adapter(new_adapter)
+    end
   end
   alias_method :adapter=, :use
 

@@ -1,6 +1,13 @@
 require 'spec_helper'
 
 describe MultiMime do
+
+  it 'should be thread safe' do
+    t1 = Thread.new { adapter = MultiMime.adapter; sleep 0.1; adapter }
+    t2 = Thread.new { MultiMime.adapter }
+    expect(t1.value).to eql t2.value
+  end
+
   context :validations do
     describe :type_for do
       specify { expect { MultiMime.type_for(nil) }.to raise_error(ArgumentError) }
