@@ -1,6 +1,6 @@
 Next Release
 ============
-* Your contribution here
+* Your contribution here.
 
 1.0.1 (31/03/2014)
 ==================
