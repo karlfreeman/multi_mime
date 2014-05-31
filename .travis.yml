@@ -20,3 +20,5 @@ matrix:
     - rvm: rbx-2
 notifications:
   email: false
+env:
+  - CODECLIMATE_REPO_TOKEN=2e219060d1f426aa912dc1de5f8573c45575edd9320befc7e7cad43f63c3a4ec 
