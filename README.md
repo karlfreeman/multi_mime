@@ -61,6 +61,7 @@ When MultiMime fails to load the specified adapter, it'll throw `MultiMime::Adap
 [![Gem Version](http://img.shields.io/gem/v/multi_mime.svg)][gem]
 [![Build Status](http://img.shields.io/travis/karlfreeman/multi_mime.svg)][travis]
 [![Code Quality](http://img.shields.io/codeclimate/github/karlfreeman/multi_mime.svg)][codeclimate]
+[![Code Coverage](http://img.shields.io/codeclimate/coverage/github/karlfreeman/multi_mime.svg)][codeclimate]
 [![Gittip](http://img.shields.io/gittip/karlfreeman.svg)][gittip]
 
 ## Supported MIME Engines
