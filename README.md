@@ -97,6 +97,6 @@ Cribbed:
 [gem]: https://rubygems.org/gems/multi_mime
 [travis]: http://travis-ci.org/karlfreeman/multi_mime
 [codeclimate]: https://codeclimate.com/github/karlfreeman/multi_mime
-[gittip]: https://www.gittip.com/karlfreeman/
+[gittip]: https://www.gittip.com/karlfreeman
 [jruby]: http://www.jruby.org
 [rubinius]: http://rubini.us
