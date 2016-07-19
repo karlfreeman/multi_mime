@@ -9,7 +9,7 @@ eg [MultiJson](https://github.com/intridea/multi_json) for MIME types.
 ## Installation
 
 ```ruby
-gem 'multi_mime', '~> 1.0'
+gem 'multi_mime', '~> 1.1'
 ```
 
 ```ruby
@@ -76,6 +76,8 @@ When MultiMime fails to load the specified adapter, it'll throw `MultiMime::Adap
 This library aims to support and is [tested against][travis] the following Ruby
 implementations:
 
+- Ruby 2.3.0
+- Ruby 2.2.0
 - Ruby 2.1.0
 - Ruby 2.0.0
 - Ruby 1.9.3

@@ -1,3 +1,3 @@
 module MultiMime
-  VERSION = '1.0.1' unless defined?(MultiMime::VERSION)
+  VERSION = '1.1.0' unless defined?(MultiMime::VERSION)
 end
