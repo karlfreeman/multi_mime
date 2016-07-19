@@ -10,6 +10,8 @@ module MultiMime
     [:rack_mime, 'rack/mime', :Rack].freeze
   ]
 
+  SEMAPHORE = Mutex.new
+
   # The default adapter based on what you currently
   # have loaded and installed. First checks to see
   # if any adapters are already loaded, then checks
@@ -46,7 +48,7 @@ module MultiMime
   #  * mime_type
   #  * rack_mime
   def use(new_adapter)
-    Thread.exclusive do
+    SEMAPHORE.synchronize do
       @adapter = load_adapter(new_adapter)
     end
   end
